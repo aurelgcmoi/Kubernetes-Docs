@@ -4,6 +4,9 @@ kind: Ingress
 metadata:
   name: documentserver
   annotations:
+  {{ if .Values.ingress.annotations }}
+    {{ .Values.ingress.annotations }}
+  {{ end }}
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-body-size: 100m
 spec:
