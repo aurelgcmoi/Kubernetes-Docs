@@ -27,6 +27,9 @@ spec:
         - name: bbuzg-ca
           secret:
             secretName: bbuzg-ca
+        - name: configmap-default-json
+          configMap:
+            name: configmap-default-json
       containers:
         - name: converter
           image: {{ .Values.converter.containerImage }}
@@ -60,3 +63,5 @@ spec:
           - name: bbuzg-ca
             mountPath: /usr/local/share/ca-certificates
             readOnly: true
+          - name: configmap-default-json
+            mountPath: /etc/onlyoffice/documentserver
