@@ -30,6 +30,9 @@ spec:
         - name: configmap-default-json
           configMap:
             name: configmap-default-json
+            items:
+            - key: default.json
+              path: default.json
       containers:
         - name: converter
           image: {{ .Values.converter.containerImage }}
@@ -65,3 +68,4 @@ spec:
             readOnly: true
           - name: configmap-default-json
             mountPath: /etc/onlyoffice/documentserver/default.json
+            subPath: default.json
