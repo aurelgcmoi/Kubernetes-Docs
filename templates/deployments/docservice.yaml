@@ -96,3 +96,5 @@ spec:
           - name: bbuzg-ca
             mountPath: /usr/local/share/ca-certificates
             readOnly: true
+          command: ["/bin/bash"]
+          args: ["-c", "cat /etc/onlyoffice/documentserver/default.json | sed 's/"rejectUnauthorized": .*/"rejectUnauthorized": false/' > /etc/onlyoffice/documentserver/default.json"]
