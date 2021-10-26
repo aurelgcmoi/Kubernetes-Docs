@@ -33,6 +33,9 @@ spec:
         - name: ds-license
           secret:
             secretName: license
+        - name: bbuzg-ca
+          secret:
+            secretName: bbuzg-ca
       containers:
         - name: proxy
           image: {{ .Values.proxy.proxyContainerImage }}
