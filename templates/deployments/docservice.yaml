@@ -82,6 +82,8 @@ spec:
                 key: rabbitmq-password
           - name: NODE_EXTRA_CA_CERTS
             value: '/usr/local/share/ca-certificates/bbuzg.crt'
+          - name: NODE_TLS_REJECT_UNAUTHORIZED
+            value: '0'
           envFrom:
           - secretRef:
               name: jwt
