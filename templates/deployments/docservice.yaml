@@ -39,6 +39,9 @@ spec:
         - name: configmap-default-json
           configMap:
             name: configmap-default-json
+            items:
+            - key: default.json
+              path: default.json
       containers:
         - name: proxy
           image: {{ .Values.proxy.proxyContainerImage }}
@@ -103,3 +106,4 @@ spec:
             readOnly: true
           - name: configmap-default-json
             mountPath: /etc/onlyoffice/documentserver/default.json
+            subPath: default.json
