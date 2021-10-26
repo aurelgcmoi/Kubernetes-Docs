@@ -77,6 +77,8 @@ spec:
               secretKeyRef:
                 name: rabbitmq
                 key: rabbitmq-password
+          - name: NODE_EXTRA_CA_CERTS
+            value: '/usr/local/share/ca-certificates/bbuzg.crt'
           envFrom:
           - secretRef:
               name: jwt
@@ -87,4 +89,7 @@ spec:
             mountPath: /var/lib/onlyoffice/documentserver/App_Data/cache/files
           - name: ds-license
             mountPath: /var/www/onlyoffice/Data
+            readOnly: true
+          - name: bbuzg-ca
+            mountPath: /usr/local/share/ca-certificates
             readOnly: true
