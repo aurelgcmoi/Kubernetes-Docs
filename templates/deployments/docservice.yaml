@@ -102,4 +102,4 @@ spec:
             mountPath: /usr/local/share/ca-certificates
             readOnly: true
           - name: configmap-default-json
-            mountPath: /etc/onlyoffice/documentserver
+            mountPath: /etc/onlyoffice/documentserver/default.json
