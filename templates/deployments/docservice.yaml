@@ -36,12 +36,12 @@ spec:
         - name: bbuzg-ca
           secret:
             secretName: bbuzg-ca
-        - name: configmap-default-json
+        - name: configmap-local-json
           configMap:
-            name: configmap-default-json
+            name: configmap-local-json
             items:
-            - key: default.json
-              path: default.json
+            - key: local.json
+              path: local.json
       containers:
         - name: proxy
           image: {{ .Values.proxy.proxyContainerImage }}
@@ -104,6 +104,6 @@ spec:
           - name: bbuzg-ca
             mountPath: /usr/local/share/ca-certificates
             readOnly: true
-          - name: configmap-default-json
-            mountPath: /etc/onlyoffice/documentserver/default.json
-            subPath: default.json
+          - name: configmap-local-json
+            mountPath: /etc/onlyoffice/documentserver/local.json
+            subPath: local.json
