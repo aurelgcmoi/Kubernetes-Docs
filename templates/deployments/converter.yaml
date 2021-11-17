@@ -27,7 +27,7 @@ spec:
         - name: bbuzg-ca
           secret:
             secretName: bbuzg-ca
-        - name: configmap-default-json
+        - name: configmap-local-json
           configMap:
             name: configmap-local-json
             items:
