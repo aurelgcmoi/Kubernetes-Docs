@@ -24,9 +24,6 @@ spec:
         - name: ds-license
           secret:
             secretName: license
-        - name: bbuzg-ca
-          secret:
-            secretName: bbuzg-ca
         - name: configmap-local-json
           configMap:
             name: configmap-local-json
@@ -37,23 +34,6 @@ spec:
         - name: converter
           image: {{ .Values.converter.containerImage }}
           resources: {{- toYaml .Values.converter.resources | nindent 12 }}
-          env:
-          - name: DB_PWD
-            valueFrom:
-              secretKeyRef:
-                name: postgresql
-                key: postgresql-password
-          - name: AMQP_PWD
-            valueFrom:
-              secretKeyRef:
-                name: rabbitmq
-                key: rabbitmq-password
-          - name: NODE_EXTRA_CA_CERTS
-            value: '/usr/local/share/ca-certificates/bbuzg.crt'
-          - name: NODE_TLS_REJECT_UNAUTHORIZED
-            value: '0'
-          - name: DS_LOG_LEVEL
-            value: DEBUG
           envFrom:
           - secretRef:
               name: jwt
@@ -64,10 +44,6 @@ spec:
             mountPath: /var/lib/{{ .Values.product.name }}/documentserver/App_Data/cache/files
           - name: ds-license
             mountPath: /var/www/{{ .Values.product.name }}/Data
-            readOnly: true
-          - name: bbuzg-ca
-            mountPath: /usr/local/share/ca-certificates
-            readOnly: true
           - name: configmap-local-json
             mountPath: /etc/onlyoffice/documentserver/local.json
             subPath: local.json
