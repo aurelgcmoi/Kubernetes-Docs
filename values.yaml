@@ -5,14 +5,16 @@ connections:
   dbHost: postgresql
   dbUser: postgres
   dbPort: "5432"
+  dbPwd: password
   redisHost: redis-master
   amqpHost: rabbitmq
   amqpUser: user
   amqpProto: amqp
+  amqpPwd: password
 
 persistence:
   storageClass: "nfs"
-  size: 8Gi
+  size: 20Gi
 
 metrics:
   enabled: false
@@ -118,4 +120,7 @@ ingress:
     host: example.com
     secret: tls
 grafana_ingress:
+  enabled: false
+
+debug:
   enabled: false
